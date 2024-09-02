@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX_12</title>
+</head>
+<style>
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .box {
+        height: 45px;
+        width: 45px;
+        margin: 10px;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 200;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+    </div>
+</body>
+<script>
+
+    document.querySelectorAll(".box").forEach(e => {
+
+        var x = Math.floor(Math.random()*256 )
+        var y = Math.floor(Math.random()*256 )
+        var z = Math.floor(Math.random()*256 )
+        var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+        e.style.background =bgColor
+    });
+</script>
+
+</html>

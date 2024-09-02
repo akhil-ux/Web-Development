@@ -1,0 +1,7 @@
+REACT                                                                 ANGULAR
+React is a small view library                               Angular is a full frame work.
+React covers only rendering and event handeling part        Angular provides complete soltuion for front end development
+Presentation code in JAVASCRIPT powered by JSX.             Presentation code in HTML embedded with JAVASCRIPT expressions
+React's core size is smaller than angular , so bit fast     Angular being a framework contains a lot of code, resulting in longer load time.
+React is very flexible.                                     Anguar has less flexible.
+Gread performer, since it uses Virtual DOM.                 Angular uses actual DOM which affect its performance.

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document_get_elem_by_id</title>
+    <style>
+        .box {
+            height: 45px;
+            width: 55px;
+            border: 2px solid rgb(90, 53, 193);
+            margin: 5px;
+            padding: 5px;
+            background-color: rgb(90, 53, 193);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+
+            <div class="box">BP</div>
+            <div id="green"class="box">BP</div>
+            <div id="green"class="box">BP</div>
+            <div class="box">BP</div>
+            <div class="box">BP</div>
+        </div>
+        <script>
+            console.log(document.getElementById("green"))
+            console.log(document.getElementsByClassName("box"))
+            document.querySelectorAll("#green").forEach(element => {
+                element.style.backgroundColor="green"
+                
+            });
+        </script>
+    </body>
+
+</html>
