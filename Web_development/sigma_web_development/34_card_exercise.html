@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video_Card</title>
+    <style>
+        .card {
+            display: flex;
+            margin-left: 10px;
+            margin-top: 40px;
+            border: 2px solid black;
+            height: 188px;
+        }
+
+        .image .capsule
+        {
+            position: absolute;
+            background-color: grey;
+            bottom: 4px;
+            z-index: 10;
+            right: 5px;
+            opacity: 0.9;
+            color: white;
+            padding: 3px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="image">
+
+                <img
+                    src="https://i.ytimg.com/vi/WYazkpCQNQw/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA1L4YQ266CFoo4Z3Nmap5QHUlB7A">
+                    <div class="capsule">
+                        hey
+                    </div>
+                </img>
+            </div>
+            <div class="text">
+                <h2 style="margin-left: 6px;font-size: larger;">{title}</h2>
+                <p style="margin-left: 6px;">
+                    {cname} .{viewsstr}views .{monthold}
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        function createcard(title, cname, views, monthold, duration, thumbnail) {
+            if (views > 1000000) {
+                let viewsstr = views / 1000000 + "K";
+            }
+            else if (views < 1000000) {
+                let viewsstr = views / 1000 + "M";
+            }
+            else {
+                let viewsstr = views / 1000 + "K"
+            }
+            let html = <div class="card">
+                <div class="image">
+
+                    <img
+                        src="https://i.ytimg.com/vi/WYazkpCQNQw/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA1L4YQ266CFoo4Z3Nmap5QHUlB7A">
+                    </img>
+                </div>
+                <div class="text">
+                    <h2 style="margin-left: 6px;font-size: larger;">{title}</h2>
+                    <p style="margin-left: 6px;">
+                        {cname} .{viewsstr}views .{monthold}
+                    </p>
+                </div>
+
+            </div>
+        }
+    </script>
+</body>
+
+</html>

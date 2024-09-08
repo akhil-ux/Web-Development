@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sync and await</title>
+</head>
+
+<body>
+    <script>
+        async function getdata() {
+            return new Promise((resolve, reject)=>
+            {
+
+                setTimeout(() => {
+                    resolve(3000)
+                }, 3000);
+            })
+        }
+        async function main() {
+
+            console.log("Loading Modules")
+            console.log("Do something else")
+            let data = await getdata()
+            console.log(data)
+            console.log("process complete")
+        }
+        main()
+    </script>
+</body>
+
+</html>
