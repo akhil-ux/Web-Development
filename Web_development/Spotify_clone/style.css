@@ -1,0 +1,64 @@
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    /* background-color: black; */
+    color: black;
+}
+.left {
+    width: 25vw;
+    padding: 10px;
+}
+
+.right {
+    width: 75vw;
+}
+.invert
+{
+    filter: invert(1);
+}
+.bg-black
+{
+    background-color: black;
+    color: white;
+
+}
+.bg-grey
+{
+    background-color: grey;
+}
+.library
+{
+    background-color:#121212;
+    border-radius: 10px;
+    display: flex;
+}
+.create_new_playlist
+{
+    background-color: #1F1F1F;
+    display: flex;
+    border-radius: 10px;    
+    padding: 15px;
+}
+.leftfinal
+{
+    background-color: #1F1F1F;
+    display: grid;
+    padding: 10px;
+    border-radius: 10px;
+    gap: 10px;
+    grid-template-columns: 50px 80px 80px ;
+    
+}
+.linkbox
+{
+    display: flex;
+    font-size: 10px;
+    gap: 20px;
+}
+.button_leftfinal
+{
+    height: 25px;width: 120px;border-radius: 20px;justify-content: center; align-items: center;background-color: #1F1F1F;font-size: 12px;border: 1px solid white;
+}

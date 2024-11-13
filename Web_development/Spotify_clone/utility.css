@@ -1,0 +1,22 @@
+.border{
+    border: 2px solid  red;
+    margin: 3px;
+}
+.logos
+{
+    height: 100px;
+    width: 100px;
+    filter: invert(1);
+}
+
+.flex{
+    display: flex;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.items-center{
+    align-items: center;
+}
