@@ -62,3 +62,25 @@ body{
 {
     height: 25px;width: 120px;border-radius: 20px;justify-content: center; align-items: center;background-color: #1F1F1F;font-size: 12px;border: 1px solid white;
 }
+.header
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: grey;
+}
+.header *
+{
+    padding: 8px;
+}
+.card img
+{
+    width: 100%;
+    object-fit: contain;
+}
+.spotifyplaylist
+{
+    padding: 10px;
+}
+.spotifyplaylist .card{
+    width: 250px;
+}
