@@ -1,12 +1,13 @@
-*
-{
+* {
     margin: 0px;
     padding: 0px;
 }
-body{
+
+body {
     /* background-color: black; */
     color: black;
 }
+
 .left {
     width: 25vw;
     padding: 10px;
@@ -14,73 +15,123 @@ body{
 
 .right {
     width: 75vw;
+    height: auto;
 }
-.invert
-{
+
+.invert {
     filter: invert(1);
 }
-.bg-black
-{
+
+.bg-black {
     background-color: black;
     color: white;
 
 }
-.bg-grey
-{
+
+.bg-grey {
     background-color: grey;
 }
-.library
-{
-    background-color:#121212;
+
+.library {
+    background-color: #121212;
     border-radius: 10px;
     display: flex;
 }
-.create_new_playlist
-{
+
+.create_new_playlist {
     background-color: #1F1F1F;
     display: flex;
-    border-radius: 10px;    
+    border-radius: 10px;
     padding: 15px;
 }
-.leftfinal
-{
+
+.leftfinal {
     background-color: #1F1F1F;
     display: grid;
     padding: 10px;
     border-radius: 10px;
     gap: 10px;
-    grid-template-columns: 50px 80px 80px ;
-    
+    grid-template-columns: 50px 80px 80px;
+
 }
-.linkbox
-{
+
+.linkbox {
     display: flex;
     font-size: 10px;
     gap: 20px;
 }
-.button_leftfinal
-{
-    height: 25px;width: 120px;border-radius: 20px;justify-content: center; align-items: center;background-color: #1F1F1F;font-size: 12px;border: 1px solid white;
+
+.button_leftfinal {
+    height: 25px;
+    width: 120px;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: #1F1F1F;
+    font-size: 12px;
+    border: 1px solid white;
 }
-.header
-{
+
+.header {
     display: flex;
     justify-content: space-between;
-    background-color: grey;
-}
-.header *
-{
+    background-color: black}
+
+.header * {
     padding: 8px;
 }
-.card img
-{
-    width: 100%;
-    object-fit: contain;
-}
-.spotifyplaylist
-{
+
+.spotifyplaylist {
     padding: 10px;
+    height: auto;
+    width: auto;
 }
-.spotifyplaylist .card{
-    width: 250px;
+
+
+
+.cardcontainer {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 30px;
+}
+
+.card img {
+    margin-top: 12px;
+    height: auto;
+    width: 160px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.card
+{
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    height: 209px;
+    width: 190px;
+    overflow: hidden;
+    background-color: #1F1F1F;
+    position: relative;
+    
+}
+
+.play
+{
+    width: 20px;
+    height: 20px;
+    background-color: #0f0;
+    border-radius: 100%;
+    /* border: 2px solid black; */
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    bottom: 20px;
+    opacity: 0.7;
+
 }
