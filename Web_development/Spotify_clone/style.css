@@ -36,6 +36,9 @@ body {
     background-color: #121212;
     border-radius: 10px;
     display: flex;
+    height: auto;
+    width: auto;
+    flex-wrap: wrap;
 }
 
 .create_new_playlist {
@@ -91,37 +94,42 @@ body {
 
 .cardcontainer {
     height: auto;
-    width: auto;
+    width: 94%;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    margin: 30px;
+    margin-left: 15px;
+    margin-top: 25px;
+    max-height: 70vh;
+    overflow-y: scroll;
 }
 
 .card img {
-    margin-top: 12px;
+    margin-top:auto ;
     height: auto;
-    width: 160px;
-    border-radius: 20px;
+    width: 100px;
+    border-radius: 12px;
     object-fit: cover;
 }
 .card
 {
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     display: flex;
-    height: 209px;
-    width: 190px;
+    height: 180px;
+    width: 105px;
     overflow: hidden;
     background-color: #1F1F1F;
     position: relative;
+    border-radius: 10px;
     
 }
 
 .play
 {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     background-color: #0f0;
     border-radius: 100%;
     /* border: 2px solid black; */
@@ -130,8 +138,85 @@ body {
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 10px;
-    bottom: 20px;
-    opacity: 0.7;
+    right: 0px;
+    bottom: 70px;
 
+}
+.card p 
+{   
+    font-size: 10px;
+    padding: 10px;
+}
+.signupbtn
+{
+    font-weight: bolder;
+    color: white;
+    font-size: 12px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #1F1F1F;
+}
+.signupbtn:hover
+{
+    cursor: pointer;
+    box-shadow: 2px 5px 10px green;
+    font-size: 15px;
+    color: rgb(56, 243, 56);
+
+    /* height: 12px; */
+    /* width: 12px; */
+}
+.loginbtn
+{
+    background-color: #1F1F1F;
+    color: white;
+    font-weight: bolder;
+    font-size: 12px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+.loginbtn:hover
+{
+    cursor: pointer;
+    box-shadow: 2px 5px 10px green;
+    font-size: 15px;
+    font-weight: bolder;
+    color: rgb(56, 243, 56);
+    /* height: 12px; */
+    /* width: 12px; */
+}
+.player
+{
+    height: 100px;
+    border: 2px solid green;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    bottom: 0;
+    background-color: grey;
+
+}
+.songlist ul
+{
+    height: 150px;
+    width: 205px;
+    padding: 15px;
+    margin-left: 2px;
+    overflow-y: scroll;
+}
+.songlist ul li
+{
+    list-style: decimal;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+.songinfo
+{
+    margin-left: 10px;
 }
