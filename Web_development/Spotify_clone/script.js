@@ -6,27 +6,33 @@ async function getsongs() {
     let div = document.createElement("div");
     div.innerHTML = response;
     let as = div.getElementsByTagName("a");
-    let songs=[]
+    let songs = []
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
-        if(element.href.endsWith(".mp3"))
-        {
-            songs.push(element.href.split("/songs/")[1])
+        if (element.href.endsWith(".mp3")) {
+            songs.push(element.href.split("-")[1])
         }
-        
+
     }
     return songs
 }
-async function main()
-{
-    // let songs= await getsongs()
-    // console.log(songs)
-    // let songUl=document.querySelector(".songlist").getElementsByTagName("ul")[0]
-    // for(const song of songs)
-    // {
-    //     songUl.innerHTML=songUl.innerHTML+`<li> ${song.replaceAll("%20"," ")}</li>`;
-    // }
-    // var audio = new Audio(songs[0]);
+async function main() {
+    let songs = await getsongs()
+    console.log(songs)
+    let songUl = document.querySelector(".songlist").getElementsByTagName("ul")[0]
+    for (const song of songs) {
+        songUl.innerHTML = songUl.innerHTML + `<li>
+                            <img style="filter: invert();" src="music.svg" alt="">
+                            <div class="info">
+                                <div>${song.replaceAll("%20"," ")}</div>
+                                <div>Song Artist</div>
+                            </div>
+                            <div class="playnow">
+                                <span>Play Now</span>
+                                <img src="play.svg" alt="">
+                            </div></li><br>`;
+    }
+    var audio = new Audio(songs[0]);
     // audio.play();
     // audio.play(songs)
 
