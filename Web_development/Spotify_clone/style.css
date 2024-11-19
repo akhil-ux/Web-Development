@@ -94,6 +94,7 @@ body {
 
 
 .cardcontainer {
+    border: 1px solid yellow;
     height: auto;
     width: 94%;
     display: flex;
@@ -188,15 +189,6 @@ body {
     /* width: 12px; */
 }
 
-
-
-.player .seekbar {
-    border: 1px solid red;
-    margin-top: 106px;
-    height: 20px;
-    width: 1930px;
-}
-
 .songlist {
     margin-top: 20px 20px;
     height: 200px;
@@ -236,37 +228,52 @@ body {
     padding: 12px;
 }
 
-.seekbar {
-    border: 2px solid yellow;
-    width: 100%;
+.playbar {
+    width: 68vw;
+    height: 40px;
+    padding: 10px;
+    margin-top: 153px;
     display: flex;
-    margin-right: 220px;
+    flex-direction: column;
+    align-items: center;
+    position: sticky;
+    bottom: 0;
+    background-color: #eee7e7;
+    filter: invert();
+    border-radius: 10px;
 }
 
 .controls {
-    border: 2px solid rgb(45, 6, 6);
-    height: 20px;
-    width: auto;
+    position: absolute;
+    top: 10px;
+    gap: 20px;
     display: flex;
     justify-content: center;
-    margin-left: 152px;
+    align-items: center;
+    height: fit-content;
 }
 
-.player {
-    height: 125px;
-    width: 68vw;
-    padding: 15px;
-    border: 1px solid white;
-    /* position: fixed; */
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    /* gap: 10px; */
-    margin-left: -10px;
-    /* bottom: 10px; */
-    /* filter: invert(1); */
-    background-color: #073b80;
-    border: 2px solid red;
-    border-radius: 15px;
+.seekbar {
+    background-color: black;
+    position: absolute;
+    padding: 3px;
+    bottom: 2px;
+    border: 2px solid black;
+    height: 2px;
+    width: 95%;
+    margin-top: 30px;
+    border-radius: 10px;
+}
 
+.circle {
+    position: relative;
+    bottom: 7px;
+    background-color: white;
+    height: 16px;
+    width: 16px;
+    border-radius: 0px;
+    display: flex;
+    transition: left 0.5s;
+    border-radius: 20px;
+    left: 10%;
 }
