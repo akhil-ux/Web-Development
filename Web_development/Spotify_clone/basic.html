@@ -7,18 +7,46 @@
     <title>Just a practice</title>
 </head>
 <style>
-    
-    .controls
-    {   
+    .controls {
         height: fit-content;
         border: 2px solid blue;
         width: 90px;
     }
-   
+
+    .container {
+        border: 2px solid red;
+        height: 200px;
+        width: 200px;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        top: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card1 {
+        border: 4px solid yellow;
+    }
+
+    .card2 {
+        display: flex;
+        border: 4px solid yellow;
+
+    }
 </style>
 
 <body>
-    
+    <div class="container">
+        container
+        <div class="card1">
+            Hey2
+        </div>
+        <div class="card2">
+            Hey3
+        </div>
+    </div>
 </body>
 
 </html>

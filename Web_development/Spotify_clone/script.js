@@ -16,6 +16,12 @@ async function getsongs() {
     }
     return songs
 }
+const playmusic=(track)=> 
+{
+    let audio = new Audio("/songs/"+track)
+    audio.play();
+
+}
 async function main() {
     let songs = await getsongs()
     console.log(songs)
@@ -32,9 +38,8 @@ async function main() {
                                 <img src="play.svg" alt="">
                             </div></li><br>`;
     }
-    var audio = new Audio(songs[0]);
-    // audio.play();
-    // audio.play(songs)
-
+    Array.from(document.querySelector(".playbar")).getElementsByTagName("div").forEach(e=> {
+       console.log(e)    
+    });
 }
 main()
