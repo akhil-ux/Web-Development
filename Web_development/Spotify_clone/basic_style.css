@@ -1,0 +1,65 @@
+.container
+{
+    border: 2px solid  rgb(0, 0, 0);
+    width: 80%;
+    margin-left: 190px;
+    height: 4000px;
+    position: relative;
+}
+.playbar {
+    width: 68vw;
+    height: 50px;
+    border-radius: 20px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    border: 2px solid red;
+    top: 0px;
+    
+}
+.songinfo
+{
+    height: 30px;
+    display: inline-block;
+    border: 2px solid blue;
+}
+.songtime
+{
+    height: 30px;
+
+    display:inline-block;
+    border: 2px solid yellow;
+}
+
+.controls {
+    border: 2px solid green;
+    top: 2px;
+    gap: 15px;
+    display: inline-block;
+    height: fit-content;
+}
+.controls img{
+    cursor: pointer;
+}
+
+.seekbar {
+    background-color: black;
+    position: absolute;
+    padding: 3px;
+    bottom: 0px;
+    border: 2px solid black;
+    height: 2px;
+    width: 95%;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.circle {
+    cursor:pointer;
+    position: relative;
+    bottom: 7px;
+    background-color: rgb(255, 255, 255);
+    transition: left 0.5s;
+    left: 10%;
+}

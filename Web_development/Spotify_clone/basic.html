@@ -4,47 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Just a practice</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="basic_style.css">
 </head>
-<style>
-    .controls {
-        height: fit-content;
-        border: 2px solid blue;
-        width: 90px;
-    }
-
-    .container {
-        border: 2px solid red;
-        height: 200px;
-        width: 200px;
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        position: absolute;
-        top: 0px;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .card1 {
-        border: 4px solid yellow;
-    }
-
-    .card2 {
-        display: flex;
-        border: 4px solid yellow;
-
-    }
-</style>
 
 <body>
     <div class="container">
-        container
-        <div class="card1">
-            Hey2
-        </div>
-        <div class="card2">
-            Hey3
+        hey hahah
+        <div class="playbar">
+            <div class="songinfo">
+                Hey 
+            </div>
+            <div class="controls">
+                <img id="prev" src="prev_song.svg">
+                <img id="play" src="play.svg">
+                <img id="next" src="next_song.svg">
+            </div>
+            <div class="songtime">
+                TIME
+            </div>
+            <div class="seekbar">
+                <img class="circle" src="seek_bar_circle.svg" alt="">
+            </div>
         </div>
     </div>
 </body>
