@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events_in_js</title>
+    <title>Events in JS (Capturing)</title>
 </head>
-
 <style>
-    .container
-    {
+    .container {
         margin-top: 150px;
         border: 2px solid black;
         display: flex;
@@ -17,8 +14,7 @@
         align-items: center;
         justify-content: center;
     }
-    .parent
-    {
+    .parent {
         border: 2px solid black;
         height: 250px;
         width: 250px;
@@ -26,8 +22,7 @@
         align-items: center;
         justify-content: center;
     }
-    .child
-    {
+    .child {
         border: 1px solid black;
         height: 200px;
         width: 200px;
@@ -35,8 +30,7 @@
         align-items: center;
         justify-content: center;
     }
-    #btt
-    {
+    #btt {
         color: red;
     }
 </style>
@@ -52,20 +46,16 @@
     </div>
 </body>
 <script>
-    let bt = document.getElementById("btt")
-    document.querySelector(".child").addEventListener("click",(e)=>
-    {
-        console.log(("I am clicked"))
-    })
-    document.querySelector(".parent").addEventListener("click",(e)=>
-    {   
-        // e.stopImmediatePropagation()
+    document.querySelector(".container").addEventListener("click", () => {
+        console.log("I am clicked thrice");
+    }, true); // Event Capturing
 
-        console.log(("I am clicked twice"))
-    })
-    document.querySelector(".container").addEventListener("click",()=>
-    {
-        console.log(("I am clicked thrice"))
-    })
+    document.querySelector(".parent").addEventListener("click", (e) => {   
+        console.log("I am clicked twice");
+    }, true); // Event Capturing
+
+    document.querySelector(".child").addEventListener("click", (e) => {
+        console.log("I am clicked");
+    }, true); // Event Capturing
 </script>
 </html>
