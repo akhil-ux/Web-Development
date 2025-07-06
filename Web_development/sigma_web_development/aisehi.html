@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Video Summarization</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    * {
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        scroll-behavior: smooth;
+    }
+    html, body {
+        height: 100%;
+        overflow: auto;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        font-family: Poppins, sans-serif;
+        background: #000;
+        font-size: calc(var(--_size) * 0.022);
+        --_factor: min(1000px, 100vh);
+        --_size: min(var(--_factor), 100vw);
+    }
+
+    nav {
+        background-color: transparent;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        display: flex; /* Add display: flex */
+        justify-content: space-between; /* Align items to start and end */
+        align-items: center; /* Center vertically */
+        padding: 10px 20px; /* Add some padding to the sides */
+    }
+    svg.filters {
+        height: 0;
+        width: 0;
+        position: absolute;
+        z-index: -1;
+    }
+    .header-text {
+        color: #c8c2bd;
+        font-size: 3em;
+        text-align: center;
+        line-height: 1.0625;
+        font-weight: 600;
+        letter-spacing: -0.009em;
+    }
+    .glow-filter {
+        position: relative;
+        display: inline-block;
+        scale: 1;
+        animation: onloadscale 1s ease-out forwards;
+    }
+    .glow-filter::before {
+        content: attr(data-text);
+        position: absolute;
+        pointer-events: none;
+        color: #fffaf6;
+        background: linear-gradient(0deg, #dfe5ee 0%, #fffaf6 50%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: url(#glow-4);
+        opacity: 0;
+        animation: onloadopacity 1s ease-out forwards;
+    }
+    @keyframes onloadscale {
+        24% { scale: 1; }
+        100% { scale: 1.02; }
+    }
+    @keyframes onloadopacity {
+        24% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    p {
+        position: relative;
+        color: #86868b;
+        font-weight: 600;
+        text-align: center;
+        background: linear-gradient(0deg, #86868b 0%, #bdc2c9 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-top: 1em;
+        max-width: 28em;
+    }
+    p span {
+        position: relative;
+        display: inline-block;
+        -webkit-text-fill-color: #e7dfd6;
+        font-weight: 1000;
+    }
+    .bg {
+        width: 100%;
+        height: 100%;
+        max-width: 44em;
+        position: absolute;
+    }
+    .bg > div {
+        position: absolute;
+        scale: 1.2;
+        opacity: 0.6;
+    }
+    .bg > div:nth-child(1) {
+        width: 100%;
+        height: 100%;
+        border-radius: 100em;
+        box-shadow: 
+            inset 0 0 4em 3em rgba(238, 200, 175, 0.2),
+            inset 0 0 2em 0.4em rgba(238, 200, 175, 0.2),
+            0 0 0.1em 0.1em rgba(238, 200, 175, 0.2),
+            0 0 1em 0.4em rgba(238, 200, 175, 0.3);
+        translate: 0 -70%;
+        animation: onloadbgt 1s ease-in-out forwards;
+    }
+    .bg > div:nth-child(2) {
+        width: 100%;
+        height: 100%;
+        border-radius: 100em;
+        box-shadow: 
+            inset 0 0 4em 3em rgba(238, 200, 175, 0.2),
+            inset 0 0 2em 0.4em rgba(238, 200, 175, 0.2),
+            0 0 0.1em 0.1em rgba(238, 200, 175, 0.2),
+            0 0 1em 0.4em rgba(238, 200, 175, 0.3);
+        translate: 0 70%;
+        animation: onloadbgb 1s ease-in-out forwards;
+    }
+    @keyframes onloadbgt {
+        0% { translate: 0 -70%; opacity: 0.3; }
+        100% { translate: 0 -64%; opacity: 0.8; }
+    }
+    @keyframes onloadbgb {
+        0% { translate: 0 70%; opacity: 0.3; }
+        100% { translate: 0 64%; opacity: 0.8; }
+    }
+    .video-upload{
+        width: 400px;
+        padding: 1.5em;
+        background-color: rgba(30, 30, 30, 0.8);
+        border-radius: 12px;
+        text-align: center;
+        color: #fff;
+        font-family: Poppins, sans-serif;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+    /* Feature Section Styles */
+    .feature-section {
+        position: fixed; /* Fix the section at the bottom */
+        bottom: 0; /* Align to the bottom of the viewport */
+        width: 100%; /* Full width */
+        padding: 1em 0; /* Padding for spacing */
+        text-align: center;
+        background-color: transparent;
+        z-index: 1000; /* Ensure it is above other content */
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    
+    .feature-cards {
+        display: flex;
+        gap: 1.5em;
+        justify-content: center;
+        margin-top: 1.5em;
+    }
+    .card {
+        width: 200px;
+        padding: 1.5em;
+        background-color: rgba(30, 30, 30, 0.8);
+        border-radius: 12px;
+        text-align: center;
+        color: #fff;
+        font-family: Poppins, sans-serif;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+    .card h3 {
+        font-size: 1.25em;
+        margin: 0.5em 0;
+    }
+    .card p {
+        font-size: 0.875em;
+        margin: 0.5em 0 0;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        background-color: rgba(238, 200, 175, 0.9);
+        box-shadow: 0 6px 20px rgba(238, 200, 175, 0.5);
+        color: #000;
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        text-align: center;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Login Form Overlay */
+  .login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    z-index: 1200;
+  }
+  
+  .login-container {
+    background: #222;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .login-container h2 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .login-container input {
+    width: 100%;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .login-container button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    background-color: #4CAF50;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .login-container button:hover {
+    background-color: #45a049;
+  }
+  
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>VideoSum</h1>
+    </nav>
+
+    <!-- Background and Header Text -->
+    <div class="bg">
+        <div></div>
+        <div></div>
+    </div>
+    <div class="header-text" aria-hidden="true">
+        <br><span class="glow-filter" data-text="Transform Your Videos with">Transform Your Videos with.</span><br>AI-Powered Summarization.<br>
+    </div>
+    <p>
+        Extract key insights, generate summaries, and optimize your content with our advanced <span>AI technology.</span> Save time and maximize engagement.
+    </p>
+
+    <div class="video-upload">
+        <form action="/summarize-video" method="post" enctype="multipart/form-data">
+            <div class="upload-box" id="upload-box">
+                <input type="file" name="video" required style="display: none;" id="file-input" accept=".mp4, .avi, .mov">
+                <label for="file-input" class="btn btn-outline-primary">Click to upload or drag and drop</label>
+                <p>Supported formats: MP4, AVI, MOV (MAX. 800MB)</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Summarize Video</button>
+        </form>
+    </div>
+
+    <!-- Feature Cards Section -->
+    <div class="feature-section">
+        <div class="feature-cards">
+            <div class="card" onclick="handleCardClick()">
+                <h3>Key Insights</h3>
+                <p>Gain valuable insights from your video content with our AI-powered analysis.</p>
+            </div>
+            <div class="card" onclick="handleCardClick()">
+                <h3>Summarization</h3>
+                <p>Automatically generate concise summaries to improve viewer engagement.</p>
+            </div>
+            <div class="card" onclick="handleCardClick()">
+                <h3>Content Optimization</h3>
+                <p>Optimize your video for maximum reach and impact with AI recommendations.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Form Overlay -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-container">
+            <h2>Login</h2>
+            <input type="text" placeholder="Username" id="username">
+            <input type="password" placeholder="Password" id="password">
+            <button id="loginButton" onclick="login()">Login</button>
+            <p id="message"></p>
+        </div>
+    </div>
+
+   <script src="script.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+</body>
+</html>

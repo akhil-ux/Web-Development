@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEDIA QUERY IN CSS</title>
+</head>
+<style>
+    body {
+        background-color: red;
+    }
+
+    @media only screen and (min-width:455px) {
+        body {
+            background-color: aliceblue;
+        }
+
+    }
+
+    .box_1 {
+        border: 2px solid black;
+        height: 230px;
+        width: 230px;
+        margin-top: 20px;
+
+    }
+
+    .box {
+        border: 2px solid black;
+        height: 30px;
+        width: 130px;
+        margin-top: 20px;
+
+    }
+</style>
+
+<body>
+    <div>
+        Hey i am a red body.
+    </div>
+    <div class="box_1">
+        <div class="box">I am a box</div>
+        <div class="box">I am a box</div>
+        <div class="box">I am a box</div>
+    </div>
+</body>
+
+</html>
