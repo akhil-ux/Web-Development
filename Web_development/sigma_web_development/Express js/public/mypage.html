@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        async function testPost() {
+            let a = await fetch("/postrequest", { method: "POST" })
+            let b = await a.text()
+            console.log(b)
+
+        }
+        async function testPUT() {
+            let c = await fetch("/putrequest",{method :"PUT"})
+            let d = await c.text()
+            console.log(d)
+        }
+        async function testdelete(params) {
+            let e = await fetch("/deleterequest",{method:"DELETE"})
+            let f = await e.text()
+            console.log(f)
+        }
+        testPost()
+        testPUT()
+        testdelete()
+    </script>
+</body>
+
+</html>
